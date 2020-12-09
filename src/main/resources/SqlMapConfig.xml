@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--  配置别名  -->
+    <typeAliases>
+        <package name="com.ahui.domain"/>
+    </typeAliases>
+    
+    <!--  配置jdbc.properties的位置
+    <properties resource="jdbc.properties"></properties> -->
+    <!--  配置别名  -->
+<!--    <typeAliases>-->
+<!--        &lt;!&ndash;    单个别名配置 其中alias属性是别名名称  type属性是要配置别名的全限定类名    &ndash;&gt;-->
+<!--&lt;!&ndash;        <typeAlias alias="user"  type="com.ahui.domain.User"></typeAlias>&ndash;&gt;-->
+<!--        &lt;!&ndash;   批量别名配置，扫描整个包下的类，别名为类名（首字母大小写均可以） &ndash;&gt;-->
+<!--        <package name="com.ahui.domain"/>-->
+<!--    </typeAliases>-->
+    <!--    配置mybatis的环境
+    <environments default="mysql"> -->
+        <!--  配置mysql的环境  -->
+<!--        <environment id="mysql">-->
+            <!--     配置事务的类型，看type就可以   -->
+<!--            <transactionManager type="JDBC"></transactionManager>-->
+            <!--  配置连接数据库的信息：用的是数据的信息（连接池）  -->
+<!--            <dataSource type="POOLED">-->
+<!--                <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--                <property name="url" value="jdbc:mysql://localhost:3306/demo"/>-->
+<!--                <property name="username" value="root"/>-->
+<!--                <property name="password" value="root"/>-->
+<!--                <property name="driver" value="${jdbc.driver}"/>-->
+<!--                <property name="url" value="${jdbc.url}"/>-->
+<!--                <property name="username" value="${jdbc.username}"/>-->
+<!--                <property name="password" value="${jdbc.password}"/>-->
+<!--            </dataSource>-->
+<!--        </environment>-->
+<!--    </environments>-->
+
+    <!--   指定映射文件位置，采用mapper的方式 -->
+<!--   <mappers>-->
+<!--&lt;!&ndash;       <mapper resource="com/ahui/dao/IUserDao.xml"></mapper>&ndash;&gt;-->
+<!--&lt;!&ndash;       <mapper resource="com/ahui/dao/IAccountDao.xml"></mapper>&ndash;&gt;-->
+<!--&lt;!&ndash;       <mapper class="com.ahui.dao.IUserDao2"></mapper>&ndash;&gt;-->
+<!--       <package name="com.ahui.dao"/>-->
+<!--   </mappers>-->
+</configuration>

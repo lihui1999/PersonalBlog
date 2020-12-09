@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ahui.dao.IBlogDao">
+    <!--    定义实体类和数据库blog表列名匹配-->
+    <resultMap id="blogMap" type="com.ahui.domain.Blog">
+        <id column="blog_id" property="blogID"></id>    <!-- *   -->
+        <result column="blog_userid" property="blogUserID"></result>    <!-- *   -->
+        <result column="blog_releasedate" property="blogReleaseDate"></result>  <!-- *   -->
+        <result column="blog_label" property="blogLabel"></result>  <!-- *   -->
+        <result column="blog_title" property="blogTitle"></result>  <!-- *   -->
+        <result column="blog_content" property="blogContent"></result>  <!-- *   -->
+        <result column="blog_img" property="blogImg"></result>
+    </resultMap>
+    <!--  根据id获取博文全部信息 -->
+    <select id="findBlogByID" resultMap="blogMap" parameterType="Integer">
+        select * from blog where blog_id = #{blogID};
+    </select>
+
+    <!--    查询所有博文-->
+    <select id="findAllBlog" resultMap="blogMap">
+        select * from blog;
+    </select>
+
+    <!--    插入博文-->
+    <insert id="insertBlog" parameterType="blog">
+        <!--  配置保存时获取插入的id  -->
+        <selectKey keyColumn="blog_id" keyProperty="blogID" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+        insert into blog (blog_id,blog_userid,blog_releasedate,blog_label,blog_title,blog_content)
+         values(#{blogID},#{blogUserID},#{blogReleaseDate},#{blogLabel},#{blogTitle},#{blogContent})
+    </insert>
+</mapper>

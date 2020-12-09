@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ahui.dao.IUserDao">
+    <!--    查询全部-->
+    <select id="findAll" resultType="User">
+        select * from user;
+    </select>
+
+    <!--    查询用户邮箱账号-->
+    <select id="findUserByEmail" resultType="String" parameterType="String">
+        select userEmail from user where userEmail=#{userEmail};
+    </select>
+
+    <!--    查询用户账号-->
+    <select id="findUserByAccount" resultType="String" parameterType="String">
+        select userAccount from user where userAccount=#{userAccount};
+    </select>
+
+
+<!--    <select id="findUserByPassWord" resultType="String">-->
+<!--        select userPassWord from user where (userPassWord = #{userPassWord} and userAccount = #{userAccountOrEmail})" +-->
+<!--            or (userPassWord = #{userPassWord} and userEmail = #{userAccountOrEmail})-->
+<!--    </select>-->
+
+    <!--    查询用户密码-->
+    <select id="findUserByPassWord" resultType="String" parameterType="User">
+        select userPassWord from user where userPassWord = #{userPassWord}
+        <if test="userAccount != null">
+            and userAccount = #{userAccount}
+        </if>
+        <if test="userPhone != null">
+            and userPhone = #{userPhone}
+        </if>
+        <if test="userEmail != null">
+            and userEmail = #{userEmail}
+        </if>
+    </select>
+
+    <!--    查询账号的最后一条记录-->
+    <select id="findLastUserAccount" resultType="String">
+        SELECT max(userAccount) FROM user;
+    </select>
+
+    <!--    查询用户手机号-->
+    <select id="findUserByPhone" resultType="String" parameterType="String">
+        select userPhone from user where userPhone = #{userPhone};
+    </select>
+
+    <!--    插入新用户-->
+    <insert id="insertUser" parameterType="User">
+        insert into user (userAccount,userEmail,userPassWord,userStatus) values(#{userAccount},#{userEmail},#{userPassWord},#{userStatus});
+    </insert>
+</mapper>

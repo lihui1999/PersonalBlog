@@ -1,0 +1,21 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.right_div {
+	/* margin: auto 0px; /* 设置div上下居中 */
+	/* text-align: center; /* 设置内容居中 */ 
+	width: 400px;
+	height: 300px;
+	float: right;
+	margin-right: 50px;
+	border: 1px solid #3164AF ;
+	background-color: palevioletred;
+}
+.left_div{
+	width: 650px;
+	height: 360px;
+	float: right;
+	border: 1px solid #7FFFD4;
+	background-color: cadetblue;
+}
